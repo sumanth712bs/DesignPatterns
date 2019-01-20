@@ -13,6 +13,10 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+apply plugin: "jacoco"
 
 group = 'io.badadal.sumanth'
 version = '0.0.1-SNAPSHOT'
@@ -29,3 +33,11 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+checkstyleMain {
+    maxErrors = 0
+    maxWarnings = 0
+    configFile  = file("${project.rootProject.projectDir}/gradle/config/checkstyle/checkstyle.xml")
+}
+
+checkstyleTest.enabled = false
